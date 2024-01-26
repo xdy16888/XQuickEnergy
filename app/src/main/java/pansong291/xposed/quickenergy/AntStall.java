@@ -56,7 +56,7 @@ public class AntStall {
             JSONObject jo = new JSONObject(s);
             if ("SUCCESS".equals(jo.getString("resultCode"))) {
                 if (!jo.getBoolean("hasRegister") || jo.getBoolean("hasQuit")) {
-                    Log.farm("蚂蚁新村⛪请先开启蚂蚁新村");
+                    Log.farm("蚂蚁新村-请先开启蚂蚁新村");
                     return;
                 }
 
@@ -111,7 +111,7 @@ public class AntStall {
                 s = AntStallRpcCall.shopSendBack(seatId);
                 jo = new JSONObject(s);
                 if ("SUCCESS".equals(jo.getString("resultCode"))) {
-                    Log.farm("蚂蚁新村⛪请走[" + FriendIdMap.getNameById(shopUserId) + "]的小摊"
+                    Log.farm("蚂蚁新村请走[" + FriendIdMap.getNameById(shopUserId) + "]的小摊"
                             + (amount > 0 ? "获得金币" + amount : ""));
                 } else {
                     Log.recordLog("sendBack err:", s);
@@ -142,7 +142,7 @@ public class AntStall {
                         s = AntStallRpcCall.oneKeyInviteOpenShop(friendUserId, seatId);
                         jo = new JSONObject(s);
                         if ("SUCCESS".equals(jo.getString("resultCode"))) {
-                            Log.farm("蚂蚁新村⛪邀请[" + FriendIdMap.getNameById(friendUserId) + "]开店成功");
+                            Log.farm("蚂蚁新村-邀请[" + FriendIdMap.getNameById(friendUserId) + "]开店成功");
                             return;
                         }
                     }
@@ -201,7 +201,7 @@ public class AntStall {
                     String s = AntStallRpcCall.settle(assetId, settleCoin);
                     JSONObject jo = new JSONObject(s);
                     if (jo.getString("resultCode").equals("SUCCESS")) {
-                        Log.farm("蚂蚁新村⛪[收取金币]#" + settleCoin);
+                        Log.farm("蚂蚁新村[收取金币]#" + settleCoin);
                     } else {
                         Log.recordLog("settle err:", s);
                     }
@@ -303,7 +303,7 @@ public class AntStall {
         try {
             JSONObject jo = new JSONObject(s);
             if ("SUCCESS".equals(jo.getString("resultCode"))) {
-                Log.farm("蚂蚁新村⛪在[" + FriendIdMap.getNameById(userId) + "]家摆摊");
+                Log.farm("蚂蚁新村在[" + FriendIdMap.getNameById(userId) + "]家摆摊");
                 shopIds.poll();
             }
         } catch (Throwable t) {
@@ -352,7 +352,7 @@ public class AntStall {
                 s = AntStallRpcCall.shopClose(shopId);
                 jo = new JSONObject(s);
                 if ("SUCCESS".equals(jo.getString("resultCode"))) {
-                    Log.farm("蚂蚁新村⛪收取在[" + FriendIdMap.getNameById(userId) + "]的摊位获得" + income.getString("amount"));
+                    Log.farm("蚂蚁新村收取在[" + FriendIdMap.getNameById(userId) + "]的摊位获得" + income.getString("amount"));
                 } else {
                     Log.recordLog("shopClose err:", s);
                 }
@@ -388,7 +388,7 @@ public class AntStall {
                         if ("VISIT_AUTO_FINISH".equals(bizInfo.getString("actionType"))
                                 || taskTypeList.contains(taskType)) {
                             if (finishTask(taskType)) {
-                                Log.farm("蚂蚁新村⛪[完成任务]#" + title);
+                                Log.farm("蚂蚁新村[完成任务]#" + title);
                                 taskList();
                                 return;
                             }
@@ -421,7 +421,7 @@ public class AntStall {
         try {
             JSONObject jo = new JSONObject(s);
             if ("SUCCESS".equals(jo.getString("resultCode"))) {
-                Log.farm("蚂蚁新村⛪[签到成功]");
+                Log.farm("蚂蚁新村[签到成功]");
             } else {
                 Log.recordLog("signToday err:", s);
             }
@@ -439,7 +439,7 @@ public class AntStall {
         try {
             JSONObject jo = new JSONObject(s);
             if (jo.getBoolean("success")) {
-                Log.farm("蚂蚁新村⛪[领取奖励]");
+                Log.farm("蚂蚁新村[领取奖励]");
             } else {
                 Log.recordLog("receiveTaskAward err:", s);
             }
@@ -510,7 +510,7 @@ public class AntStall {
                 String shareId = jo.getString("shareId");
                 /* 保存shareId到Statistics */
                 Statistics.stallShareIdToday(FriendIdMap.currentUid, shareId);
-                Log.recordLog("蚂蚁新村⛪[分享助力]");
+                Log.recordLog("蚂蚁新村[分享助力]");
             } else {
                 Log.recordLog("shareP2P err:", s);
             }
@@ -533,7 +533,7 @@ public class AntStall {
                         String s = AntStallRpcCall.achieveBeShareP2P(shareId);
                         JSONObject jo = new JSONObject(s);
                         if (jo.getBoolean("success")) {
-                            Log.farm("新村助力🎈[" + FriendIdMap.getNameById(uid) + "]");
+                            Log.farm("新村助力[" + FriendIdMap.getNameById(uid) + "]");
                             Statistics.stallHelpToday(FriendIdMap.currentUid, false);
                             Statistics.stallBeHelpToday(uid, false);
                             Statistics.stallP2PHelpeToday(uid);
@@ -620,7 +620,7 @@ public class AntStall {
                     s = AntStallRpcCall.nextVillage();
                     jo = new JSONObject(s);
                     if ("SUCCESS".equals(jo.getString("resultCode"))) {
-                        Log.farm("蚂蚁新村⛪进入下一村成功");
+                        Log.farm("蚂蚁新村-进入下一村成功");
                     }
                 }
             } else {
@@ -643,7 +643,7 @@ public class AntStall {
                     s = AntStallRpcCall.collectManure();
                     jo = new JSONObject(s);
                     if ("SUCCESS".equals(jo.getString("resultCode"))) {
-                        Log.farm("蚂蚁新村⛪获得肥料" + manure + "g");
+                        Log.farm("蚂蚁新村-获得肥料" + manure + "g");
                     }
                 }
             } else {
@@ -660,7 +660,7 @@ public class AntStall {
         try {
             JSONObject jo = new JSONObject(s);
             if ("SUCCESS".equals(jo.getString("resultCode"))) {
-                Log.farm("蚂蚁新村⛪扔肥料");
+                Log.farm("蚂蚁新村-扔肥料");
             }
         } catch (Throwable th) {
             Log.i(TAG, "throwManure err:");
@@ -706,7 +706,7 @@ public class AntStall {
         try {
             JSONObject jo = new JSONObject(s);
             if ("SUCCESS".equals(jo.getString("resultCode"))) {
-                Log.farm("蚂蚁新村⛪收取应收金币");
+                Log.farm("蚂蚁新村-收取应收金币");
             }
         } catch (Throwable th) {
             Log.i(TAG, "settleReceivable err:");
