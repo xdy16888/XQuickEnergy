@@ -77,7 +77,7 @@ public class ConsumeGold {
             JSONObject jo = new JSONObject(s);
             if (jo.getBoolean("success")) {
                 int receiveAmount = jo.getInt("receiveAmount");
-                Log.other("赚消费金💰[" + name + "]#" + receiveAmount);
+                Log.other("赚消费金[" + name + "]#" + receiveAmount);
             }
         } catch (Throwable t) {
             Log.i(TAG, "taskV2TriggerReceive err:");
@@ -133,7 +133,7 @@ public class ConsumeGold {
                         if (jo.getBoolean("success")) {
                             JSONObject homePromoPrizeInfoDTO = jo.getJSONObject("homePromoPrizeInfoDTO");
                             int quantity = homePromoPrizeInfoDTO.getInt("quantity");
-                            Log.other("赚消费金💰[投5币抽]#" + quantity);
+                            Log.other("赚消费金[投5币抽]#" + quantity);
                             if (homePromoPrizeInfoDTO.has("promoAdvertisementInfo")) {
                                 JSONObject promoAdvertisementInfo = homePromoPrizeInfoDTO
                                         .getJSONObject("promoAdvertisementInfo");
@@ -160,7 +160,7 @@ public class ConsumeGold {
                     jo = new JSONObject(ConsumeGoldRpcCall.openBoxAward());
                     if (jo.getBoolean("success")) {
                         int amount = jo.getInt("amount");
-                        Log.other("消费金签到💰[" + amount + "金币]");
+                        Log.other("消费金签到[" + amount + "金币]");
                     }
                 }
             }
