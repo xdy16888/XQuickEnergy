@@ -203,7 +203,7 @@ public class AntSports {
                     parseTreasureBoxModel(loader, ja.getJSONObject(i), rankCacheKey);
                 }
                 if (completed) {
-                    Log.other("完成线路🚶🏻‍♂️[" + title + "]");
+                    Log.other("完成线路[" + title + "]");
                     queryMyHomePage(loader);
                 }
             } else {
