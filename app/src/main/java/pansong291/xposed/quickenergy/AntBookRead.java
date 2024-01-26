@@ -62,7 +62,7 @@ public class AntBookRead {
                                         if (tips.contains("已得")) {
                                             energy = Integer.parseInt(StringUtil.getSubString(tips, "已得", "g"));
                                         }
-                                        Log.forest("阅读书籍📚[" + name + "]#累计能量" + energy + "g");
+                                        Log.forest("阅读书籍[" + name + "]#累计能量" + energy + "g");
                                     }
                                 }
                                 if (energy >= 150) {
@@ -149,7 +149,7 @@ public class AntBookRead {
             JSONObject jo = new JSONObject(s);
             if (jo.getBoolean("success")) {
                 int coinNum = jo.getJSONObject("data").getInt("coinNum");
-                Log.other("阅读任务📖[" + name + "]#" + coinNum);
+                Log.other("阅读任务[" + name + "]#" + coinNum);
             }
         } catch (Throwable t) {
             Log.i(TAG, "collectTaskPrize err:");
@@ -183,7 +183,7 @@ public class AntBookRead {
                     jo = new JSONObject(AntBookReadRpcCall.openTreasureBox());
                     if (jo.getBoolean("success")) {
                         int coinNum = jo.getJSONObject("data").getInt("coinNum");
-                        Log.other("阅读任务📖[打开宝箱]#" + coinNum);
+                        Log.other("阅读任务[打开宝箱]#" + coinNum);
                     }
                 }
             }
