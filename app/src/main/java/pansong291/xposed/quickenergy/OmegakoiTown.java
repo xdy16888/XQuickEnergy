@@ -88,7 +88,7 @@ public class OmegakoiTown {
                         RewardType rewardType = RewardType.valueOf(itemId);
                         jo = new JSONObject(OmegakoiTownRpcCall.triggerTaskReward(taskId));
                         if (jo.getBoolean("success")) {
-                            Log.other("小镇任务🌇[" + name + "]#" + amount + "[" + rewardType.rewardName() + "]");
+                            Log.other("小镇任务[" + name + "]#" + amount + "[" + rewardType.rewardName() + "]");
                         }
                     }
                 }
@@ -147,7 +147,7 @@ public class OmegakoiTown {
                             String itemId = jo.getJSONObject("result").getJSONArray("rewards").getJSONObject(0)
                                     .getString("itemId");
                             RewardType rewardType = RewardType.valueOf(itemId);
-                            Log.other("小镇收金🌇[" + houseType.houseName() + "]#" + String.format("%.2f", amount)
+                            Log.other("小镇收金[" + houseType.houseName() + "]#" + String.format("%.2f", amount)
                                     + rewardType.rewardName());
                         }
                     }
